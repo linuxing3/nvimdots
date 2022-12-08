@@ -1,6 +1,12 @@
 local editor = {}
 local conf = require("modules.editor.config")
 
+-- TODO: use branch=neovim-pre-0.8.0 and opt=false
+editor["folke/todo-comments.nvim"] = {
+	opt = false,
+	branch = "neovim-pre-0.8.0",
+	config = conf.todo_comments,
+}
 editor["junegunn/vim-easy-align"] = { opt = true, cmd = "EasyAlign" }
 editor["RRethy/vim-illuminate"] = {
 	opt = true,

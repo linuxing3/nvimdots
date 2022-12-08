@@ -20,8 +20,8 @@ completion["williamboman/mason.nvim"] = {
 	},
 }
 completion["glepnir/lspsaga.nvim"] = {
-	opt = true,
-	event = "LspAttach",
+	opt = false,
+	-- event = "LspAttach",
 	config = conf.lspsaga,
 }
 completion["ray-x/lsp_signature.nvim"] = { opt = true, after = "nvim-lspconfig" }
@@ -57,7 +57,8 @@ completion["windwp/nvim-autopairs"] = {
 	config = conf.autopairs,
 }
 completion["zbirenbaum/copilot.lua"] = {
-	event = "VimEnter",
+    disable = true,
+	-- event = "VimEnter",
 	config = function()
 		vim.defer_fn(function()
 			require("copilot").setup()
@@ -65,6 +66,7 @@ completion["zbirenbaum/copilot.lua"] = {
 	end,
 }
 completion["zbirenbaum/copilot-cmp"] = {
+    disable = true,
 	after = "copilot.lua",
 	config = function()
 		require("copilot_cmp").setup()

@@ -23,6 +23,7 @@ mason_lsp.setup({
 		"clangd",
 		"gopls",
 		"pyright",
+		"rust-analyzer",
 	},
 })
 

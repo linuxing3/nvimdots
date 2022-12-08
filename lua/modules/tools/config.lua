@@ -55,6 +55,18 @@ function config.telescope()
 				show_unindexed = true,
 				ignore_patterns = { "*.git/*", "*/tmp/*" },
 			},
+            project = {
+                base_dirs = {
+                    { '~/workspace', max_depth = 4 },
+                    { '~/dev', max_depth = 4 },
+                    { '~/.local/share/nvim/site/pack/packer', max_depth = 4 },
+                    { '~/.local/share/chezmoi'},
+                },
+                hidden_files = true, -- default: false
+                theme = 'dropdown',
+                order_by = 'asc',
+                sync_with_nvim_tree = true, -- default false
+            },
 		},
 		pickers = {
 			buffers = fixfolds,
@@ -297,6 +309,7 @@ function config.legendary()
 			l = {
 				name = "LSP commands",
 				i = "lsp: LSP Info",
+				l = "lsp: LSP Log",
 				r = "lsp: LSP Restart",
 			},
 			n = {

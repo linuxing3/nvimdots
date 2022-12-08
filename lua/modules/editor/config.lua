@@ -2,6 +2,28 @@ local config = {}
 local sessions_dir = vim.fn.stdpath("data") .. "/sessions/"
 local use_ssh = require("core.settings").use_ssh
 
+function config.todo_comments()
+	require("todo-comments").setup({
+		keywords = {
+			FIX = {
+				icon = " ",
+				color = "#DC2626",
+				alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
+			},
+			TODO = { icon = " ", color = "#10B981" },
+			HACK = { icon = " ", color = "#DC2626" },
+			WARN = { icon = " ", color = "#10B981", alt = { "WARNING" } },
+			NOTE = { icon = " ", color = "#10B981", alt = { "INFO" } },
+			PERF = { icon = " ", color = "#10B981", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+		},
+	})
+	local hl = require("todo-comments.highlight")
+	local highlight_win = hl.highlight_win
+	hl.highlight_win = function(win, force)
+		pcall(highlight_win, win, force)
+	end
+end
+
 function config.nvim_treesitter()
 	vim.api.nvim_set_option_value("foldmethod", "expr", {})
 	vim.api.nvim_set_option_value("foldexpr", "nvim_treesitter#foldexpr()", {})

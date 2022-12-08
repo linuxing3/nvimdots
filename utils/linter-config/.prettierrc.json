@@ -1,0 +1,12 @@
+{
+  "printWidth": 120,
+  "trailingComma": "es5",
+  "tabWidth": 4,
+  "semi": false,
+  "indent_style": "space",
+  "indent_size": 4,
+  "singleQuote": true,
+  "quoteProps": "preserve",
+  "jsxSingleQuote": true,
+  "singleAttributePerLine": true
+}
