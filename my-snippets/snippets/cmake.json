@@ -1,0 +1,109 @@
+{
+	"default": {
+		"prefix": "default",
+		"body": [
+			"cmake_minimum_required(VERSION 3.0.0)",
+			"project(app)",
+			"",
+			"aux_source_directory(./src DIR_SRCS)",
+			"add_executable(app \\${DIR_SRCS})"
+		],
+		"description": "default templete for CMakeLists.txt"
+	},
+	"modern": {
+		"prefix": "modern",
+		"body": [
+			"cmake_minimum_required(VERSION 3.0)",
+			"project(${1})",
+			"",
+			"set(CMAKE_CXX_COMPILER clang++)",
+			"set(CMAKE_CXX_STANDARD_REQUIRED ON)",
+			"set(CMAKE_CXX_STANDARD 14)",
+			"set(CMAKE_BUILD_TYPE DEBUG)",
+			"",
+			"aux_source_directory(. DIR_SRCS)",
+			"add_executable(${2} \\${DIR_SRCS})"
+		],
+		"description": "modern template for CMakeLists.txt"
+	},
+	"library": {
+		"prefix": "library",
+		"body": [
+			"aux_source_directory(. DIR_LIB_SRCS)",
+			"",
+			"add_library (${1:LibFunctions} \\${DIR_LIB_SRCS})"
+		],
+		"description": "subdir library template for CMakeLists.txt"
+	},
+	"boost": {
+		"prefix": "boost",
+		"body": [
+			"CPMAddPackage(",
+			"  NAME Boost",
+			"  VERSION 1.77.0",
+			"  GITHUB_REPOSITORY \"boostorg/boost\"",
+			"  GIT_TAG \"boost-1.77.0\"",
+			")"
+		]
+	},
+	"cxxops": {
+		"prefix": "cxxopts",
+		"body": [
+			"CPMAddPackage(",
+			"  GITHUB_REPOSITORY jarro2783/cxxopts",
+			"  VERSION 2.2.1",
+			"  OPTIONS \"CXXOPTS_BUILD_EXAMPLES NO\" \"CXXOPTS_BUILD_TESTS NO\" \"CXXOPTS_ENABLE_INSTALL YES\"",
+			")"
+		]
+	},
+	"json": {
+		"prefix": "json",
+		"body": [
+			"CPMAddPackage(",
+			"  NAME nlohmann_json",
+			"  VERSION 3.9.1",
+			"  GITHUB_REPOSITORY nlohmann/json",
+			"  OPTIONS",
+			"    \"JSON_BuildTests OFF\"",
+			")"
+		]
+	},
+	"fmt": {
+		"prefix": "fmt",
+		"body": [
+			"CPMAddPackage(",
+			"  NAME fmt",
+			"  GIT_TAG 8.1.1",
+			"  GITHUB_REPOSITORY fmtlib/fmt",
+			"  OPTIONS \"FMT_INSTALL YES\"",
+			")"
+		]
+	},
+	"glfw": {
+		"prefix": "glfw",
+		"body": [
+			"CPMAddPackage(",
+			"NAME GLFW",
+			"GITHUB_REPOSITORY glfw/glfw",
+			"GIT_TAG 3.3.2",
+			"OPTIONS",
+			"  \"GLFW_BUILD_TESTS OFF\"",
+			"  \"GLFW_BUILD_EXAMPLES OFF\"",
+			"  \"GLFW_BULID_DOCS OFF\"",
+			")"
+		]
+	},
+	"imgui": {
+		"prefix": "imgui",
+		"body": [
+			"CPMAddPackage(\"gh:SFML/SFML#2.5.1\")",
+			"CPMAddPackage(\"gh:ocornut/imgui#docking\")",
+			"CPMAddPackage(",
+			"    GITHUB_REPOSITORY \"eliasdaler/imgui-sfml\"",
+			"    VERSION \"2.3\"",
+			"    OPTIONS \"IMGUI_DIR ${imgui_SOURCE_DIR}\"",
+			")",
+			"add_compile_definitions(IMGUI_DISABLE_DEMO_WINDOWS)"
+		]
+	}
+}
