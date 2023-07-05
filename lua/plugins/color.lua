@@ -15,4 +15,22 @@ return {
             -- vim.cmd.colorscheme("onedark")
         end,
     },
+    {
+        "ellisonleao/gruvbox.nvim",
+        config = function()
+            vim.cmd("colorscheme gruvbox")
+        end,
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        config = function()
+            -- vim.cmd.colorscheme("kanagawa")
+        end,
+    },
+    {
+        "jacoborus/tender.vim",
+        config = function()
+            -- vim.cmd.colorscheme("tender")
+        end,
+    },
 }
