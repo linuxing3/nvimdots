@@ -21,6 +21,23 @@ end
 -- commands panel
 map("n", "<leader><leader>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
 
+-- file explorer
+map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
+map({ "n", "v" }, "<f12>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition" })
+map({ "n", "v" }, "<S-f12>", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "Goto type definitions" })
+map({ "n", "v" }, "<f11>", "<cmd>Telescope lsp_implementations<cr>", { desc = "Goto Implementation" })
+map({ "n", "v" }, "<S-f11>", "<cmd>Telescope lsp_references<cr>", { desc = "Goto Reference" })
+
+-- lsp
+map({ "n", "v" }, "<f2>", vim.lsp.buf.rename, { desc = "Rename variable" })
+map({ "n", "v" }, "cr", vim.lsp.buf.rename, { desc = "Rename variable" })
+map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+
+-- dapui
+map({ "n", "v" }, "<f5>", function()
+    require("dapui").eval()
+end, { desc = "Dap UI" })
+
 -- quick tools
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
