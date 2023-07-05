@@ -18,6 +18,9 @@ local function map(mode, lhs, rhs, opts)
     end
 end
 
+-- commands panel
+map("n", "<leader><leader>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
+
 -- quick tools
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -103,6 +106,10 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 
+-- find file
+map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+
+-- list
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
 
