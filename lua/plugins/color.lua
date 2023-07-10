@@ -1,4 +1,5 @@
 return {
+    { "tanvirtin/monokai.nvim" },
     { "rose-pine/neovim" },
     { "navarasu/onedark.nvim" },
     { "ellisonleao/gruvbox.nvim" },
@@ -8,7 +9,7 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "tender",
+            colorscheme = "onedark",
         },
     },
 }

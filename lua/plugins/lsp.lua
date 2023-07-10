@@ -2,7 +2,6 @@ return {
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.bashls" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
@@ -20,11 +19,13 @@ return {
                 pyright = {},
                 clangd = {},
                 rust_analyzer = {},
-                jsonls = {},
                 bashls = {},
                 gopls = {},
             },
             setup = {
+                bashls = function(_, _)
+                    require("lspconfig").bashls.setup({})
+                end,
                 clangd = function(_, opts)
                     opts.capabilities.offsetEncoding = { "utf-16" }
                 end,
@@ -42,6 +43,12 @@ return {
     },
     {
         "mfussenegger/nvim-jdtls",
+    },
+    {
+        "Civitasv/cmake-tools.nvim",
+        setup = function()
+            require("cmake-tools").setup({})
+        end,
     },
     -- add symbols-outline
     {
