@@ -118,6 +118,7 @@ function autocmd.load_autocmds()
             { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
+            { "FileType", "wgsl", "set ft=wgsl" },
             { "FileType", "plantuml", "set ft=plantuml" },
             { "FileType", "ditaa", "set ft=ditaa" },
             { "FileType", "alpha", "set showtabline=0" },

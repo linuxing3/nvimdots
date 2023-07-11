@@ -21,10 +21,14 @@ return {
                 rust_analyzer = {},
                 bashls = {},
                 gopls = {},
+                wgsl_analyzer = {},
             },
             setup = {
                 bashls = function(_, _)
                     require("lspconfig").bashls.setup({})
+                end,
+                wgsl_analyzer = function()
+                    require("lspconfig").wgsl_analyzer.setup({})
                 end,
                 clangd = function(_, opts)
                     opts.capabilities.offsetEncoding = { "utf-16" }
