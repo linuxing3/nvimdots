@@ -48,6 +48,11 @@ function autocmd.load_autocmds()
             },
             {
                 "BufEnter",
+                "*.wgsl",
+                "silent! set ft=wgsl",
+            },
+            {
+                "BufEnter",
                 "*.plantuml",
                 "silent! set ft=plantuml",
             },
@@ -118,9 +123,6 @@ function autocmd.load_autocmds()
             { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
-            { "FileType", "wgsl", "set ft=wgsl" },
-            { "FileType", "plantuml", "set ft=plantuml" },
-            { "FileType", "ditaa", "set ft=ditaa" },
             { "FileType", "alpha", "set showtabline=0" },
             { "FileType", "markdown", "set wrap" },
             { "FileType", "make", "set noexpandtab shiftwidth=8 softtabstop=0" },
