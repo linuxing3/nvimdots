@@ -4,7 +4,7 @@ set mouse=a
 " Set Editor Font
 if exists(':GuiFont')
     " set guifont=BlexMono\ NF:h10
-    set guifont=JetBrainsMono\ NF:h12
+    set guifont=JetBrainsMono\ NF:h16
 endif
 
 " Disable GUI Tabline

@@ -22,13 +22,17 @@ return {
                 bashls = {},
                 gopls = {},
                 wgsl_analyzer = {},
+                zls = {},
             },
             setup = {
-                bashls = function(_, _)
+                bashls = function()
                     require("lspconfig").bashls.setup({})
                 end,
                 wgsl_analyzer = function()
                     require("lspconfig").wgsl_analyzer.setup({})
+                end,
+                zls = function()
+                    require("lspconfig").zls.setup({})
                 end,
                 clangd = function(_, opts)
                     opts.capabilities.offsetEncoding = { "utf-16" }
@@ -44,6 +48,7 @@ return {
                 end,
             },
         },
+        keys = { { "Alt-o", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "ClangdSwitchSourceHeader" } },
     },
     {
         "mfussenegger/nvim-jdtls",

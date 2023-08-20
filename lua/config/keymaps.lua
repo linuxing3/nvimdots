@@ -32,6 +32,7 @@ map({ "n", "v" }, "<S-f11>", "<cmd>Telescope lsp_references<cr>", { desc = "Goto
 map({ "n", "v" }, "<f2>", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "cr", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
+map("n", "<leader>h", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
 
 -- dapui
 map({ "n", "v" }, "<f5>", function()
@@ -71,6 +72,9 @@ if Util.has("bufferline.nvim") then
     map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+    map("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", { desc = "Kill others buffer" })
+    map("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", { desc = "Kill left buffer" })
+    map("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>", { desc = "Kill right buffer" })
 else
     map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
@@ -183,7 +187,9 @@ map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
 map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>h", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- tabs
