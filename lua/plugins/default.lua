@@ -74,4 +74,12 @@ return {
             opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
         end,
     },
+    {
+        "NoahTheDuke/vim-just",
+    },
+    {
+        "IndianBoy42/tree-sitter-just",
+    },
+    "skyuplam/broot.nvim",
+    "rbgrouleff/bclose.vim",
 }
