@@ -26,7 +26,7 @@ return {
             { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
             { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
             { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-            { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+            { "<leader>s.", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
             { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
             { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
             { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -103,7 +103,7 @@ return {
         },
         opts = {
             filesystem = {
-                bind_to_cwd = true,
+                bind_to_cwd = false,
             },
         },
     },
