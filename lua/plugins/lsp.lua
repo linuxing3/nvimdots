@@ -66,4 +66,62 @@ return {
         keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
         config = true,
     },
+    {
+        "nvim-neorg/neorg",
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+        build = ":Neorg sync-parsers",
+        keys = {
+            { "<leader>own", "<cmd>Neorg workspace notes<cr>", desc = "Neorg workspace notes" },
+            { "<leader>owh", "<cmd>Neorg workspace home<cr>", desc = "Neorg workspace home" },
+            { "<leader>ojt", "<cmd>Neorg journal today<cr>", desc = "Neorg journey today" },
+            { "<leader>ojy", "<cmd>Neorg journal yesterday<cr>", desc = "Neorg journal yesterday" },
+            { "<leader>ojm", "<cmd>Neorg journal tomorrow<cr>", desc = "Neorg journal tomorrow" },
+        },
+        config = function()
+            local neorg_callbacks = require("neorg.core.callbacks")
+            neorg_callbacks.on_event("core.keybinds.events.enable_keybinds", function(_, keybinds)
+                keybinds.map_event_to_mode("norg", {
+                    n = { -- Bind keys in normal mode
+                        { "<C-l>", "core.integrations.telescope.find_linkable" },
+                    },
+                    i = { -- Bind in insert mode
+                        { "<C-l>", "core.integrations.telescope.insert_link" },
+                    },
+                }, {
+                    silent = true,
+                    noremap = true,
+                })
+            end)
+            require("neorg").setup({
+                load = {
+                    ["core.defaults"] = {},
+                    ["core.concealer"] = {},
+                    ["core.dirman"] = {
+                        config = {
+                            workspaces = {
+                                notes = "~/OneDrive/org/journal",
+                                home = "~/OneDrive/org/home",
+                            },
+                        },
+                    },
+                    ["core.integrations.telescope"] = {},
+                    ["core.esupports.hop"] = {},
+                    ["core.esupports.indent"] = {},
+                    ["core.esupports.metagen"] = {},
+                    ["core.tangle"] = {},
+                    ["core.promo"] = {},
+                    ["core.qol.toc"] = {},
+                    ["core.qol.todo_items"] = {},
+                    ["core.looking-glass"] = {},
+                    ["core.summary"] = {},
+                    ["core.export"] = {},
+                    ["core.export.markdown"] = {},
+                    ["core.autocommands"] = {},
+                    ["core.fs"] = {},
+                    ["core.integrations.nvim-cmp"] = {},
+                    ["core.integrations.treesitter"] = {},
+                },
+            })
+        end,
+    },
 }

@@ -5,11 +5,12 @@ return {
     { "ellisonleao/gruvbox.nvim" },
     { "rebelot/kanagawa.nvim" },
     { "jacoborus/tender.vim" },
+    { "folke/tokyonight.nvim" },
     -- Configure LazyVim to load gruvbox
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "onedark",
+            colorscheme = "tokyonight",
         },
     },
 }

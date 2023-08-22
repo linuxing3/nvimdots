@@ -43,6 +43,11 @@ function autocmd.load_autocmds()
                 "Cargo.toml !cargo check",
             },
             {
+                "BufEnter",
+                "~/.local/share/chezmoi/*",
+                "silent! set ft=bash",
+            },
+            {
                 "BufWritePost",
                 "~/.local/share/chezmoi/* ! chezmoi apply --source-path '%'",
             },

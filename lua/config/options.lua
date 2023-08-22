@@ -2,12 +2,14 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
--- This file is automatically loaded by plugins.core
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
+if os.getenv("theme") == "light" then
+    opt.background = "light"
+end
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
