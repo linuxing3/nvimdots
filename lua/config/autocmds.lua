@@ -32,6 +32,10 @@ function autocmd.load_autocmds()
             },
             {
                 "BufWritePost",
+                "~/workspace/cxx/**/build.justfile ! just -f '%' -d . build",
+            },
+            {
+                "BufWritePost",
                 "xmake.lua ! xmake project -k compile_commands",
             },
             {
@@ -65,6 +69,7 @@ function autocmd.load_autocmds()
                 "BufWritePost",
                 "*.plantuml ! java -jar ~/.dotfiles/tools/plantuml.jar '%'",
             },
+            { "BufNewFile, BufRead", "justfile", "silent! set ft=make" },
             {
                 "BufEnter",
                 "*.ditaa",
@@ -128,6 +133,7 @@ function autocmd.load_autocmds()
             { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
+            { "FileType", "justfile", "set ft=make" },
             { "FileType", "wgsl", "set ft=wgsl" },
             { "FileType", "plantuml", "set ft=plantuml" },
             { "FileType", "ditaa", "set ft=ditaa" },

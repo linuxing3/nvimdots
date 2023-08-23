@@ -48,7 +48,6 @@ return {
                 end,
             },
         },
-        keys = { { "Alt-o", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "ClangdSwitchSourceHeader" } },
     },
     {
         "mfussenegger/nvim-jdtls",
@@ -68,7 +67,13 @@ return {
     },
     {
         "nvim-neorg/neorg",
-        dependencies = { "nvim-lua/plenary.nvim", "nvim-neorg/neorg-telescope" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-neorg/neorg-telescope",
+            "max397574/neorg-zettelkasten",
+            "tamton-aquib/neorg-jupyter",
+            "jarvismkennedy/neorgroam.nvim",
+        },
         build = ":Neorg sync-parsers",
         keys = {
             { "<leader>own", "<cmd>Neorg workspace notes<cr>", desc = "Neorg workspace notes" },
@@ -101,7 +106,17 @@ return {
                             workspaces = {
                                 notes = "~/OneDrive/org/journal",
                                 home = "~/OneDrive/org/home",
+                                roam = "~/OneDrive/org/roam",
                             },
+                            default_workspace = "roam",
+                        },
+                    },
+                    ["core.keybinds"] = {
+                        config = {
+                            hook = function(keybinds)
+                                keybinds.remap_event("norg", "n", "<S-Space>", "core.qol.todo_items.todo.task_cycle")
+                                keybinds.remap_key("norg", "n", "<S-Space>", "<Leader>t")
+                            end,
                         },
                     },
                     ["core.integrations.telescope"] = {},
@@ -120,6 +135,22 @@ return {
                     ["core.fs"] = {},
                     ["core.integrations.nvim-cmp"] = {},
                     ["core.integrations.treesitter"] = {},
+                    ["external.zettelkasten"] = {},
+                    ["external.jupyter"] = {},
+                    ["core.integrations.roam"] = {
+                        -- default keymaps
+                        keymaps = {
+                            -- select_prompt is used to to create new note / capture from the prompt directly
+                            -- instead of the telescope choice.
+                            select_prompt = "<C-n>",
+                            insert_link = "<leader>ni",
+                            find_note = "<leader>nf",
+                            capture_note = "<leader>nc",
+                            capture_index = "<leader>nci",
+                            capture_cancel = "<C-q>",
+                            capture_save = "<C-w>",
+                        },
+                    },
                 },
             })
         end,
