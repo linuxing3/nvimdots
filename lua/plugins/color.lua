@@ -1,4 +1,14 @@
 return {
+    {
+        "folke/tokyonight.nvim",
+        opts = {
+            transparent = true,
+            styles = {
+                sidebars = "transparent",
+                floats = "transparent",
+            },
+        },
+    },
     { "tanvirtin/monokai.nvim" },
     { "rose-pine/neovim" },
     { "navarasu/onedark.nvim" },
