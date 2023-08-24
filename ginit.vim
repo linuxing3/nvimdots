@@ -1,6 +1,7 @@
 " Enable Mouse
 set mouse=a
 
+set guifont=JetBrainsMono\ NF:h14
 " Set Editor Font
 if exists(':GuiFont')
     " set guifont=BlexMono\ NF:h10
