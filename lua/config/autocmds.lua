@@ -18,29 +18,47 @@ end
 
 function autocmd.load_autocmds()
     local definitions = {
-        packer = {},
-        bufs = {
+        editor = {
             {
-                "BufEnter",
-                "*.txt",
-                "silent! set ft=markdown",
+                "FocusLost, InsertLeave,TextChanged",
+                "*",
+                "silent! wall",
             },
+        },
+        bufs = {
             -- Reload vim config automatically
             {
                 "BufWritePost",
                 [[$VIM_PATH/{*.vim,*.yaml,vimrc} nested source $MYVIMRC | redraw]],
             },
+            -- Reload Vim script automatically if setlocal autoread
+            {
+                "BufWritePost,FileWritePost",
+                "*.vim",
+                [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
+            },
             {
                 "BufWritePost",
-                "~/workspace/cxx/**/build.justfile ! just -f '%' -d . build",
+                "~/workspace/cxx/**/build.justfile ! just -f '%' -d . '%:p:h'",
             },
             {
                 "BufWritePost",
                 "xmake.lua ! xmake project -k compile_commands",
             },
             {
-                "BufWritePost",
-                "CMakeLists.txt ! cmake -Bbuild -DCMAKE_EXPORTS_COMPIlATION_COMMANDS=1",
+                "BufEnter",
+                "*.txt|*.mdx|*.md|*.markdown|*.MD",
+                "silent! set ft=markdown",
+            },
+            {
+                "BufEnter",
+                "*.justfile",
+                "silent! set ft=make",
+            },
+            {
+                "BufEnter",
+                "CMakeLists.txt",
+                "silent! set ft=cmake",
             },
             {
                 "BufWritePost",
@@ -62,6 +80,11 @@ function autocmd.load_autocmds()
             },
             {
                 "BufEnter",
+                "*.wsl",
+                "silent! set ft=wgsl",
+            },
+            {
+                "BufEnter",
                 "*.plantuml",
                 "silent! set ft=plantuml",
             },
@@ -78,12 +101,6 @@ function autocmd.load_autocmds()
             {
                 "BufWritePost",
                 "*.ditaa ! java -jar ~/.dotfiles/tools/ditaa.jar '%' '%'.png",
-            },
-            -- Reload Vim script automatically if setlocal autoread
-            {
-                "BufWritePost,FileWritePost",
-                "*.vim",
-                [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
             },
             { "BufWritePre", "/tmp/*", "setlocal noundofile" },
             { "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },
@@ -133,6 +150,7 @@ function autocmd.load_autocmds()
             { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
+            { "FileType", "lua", "set ft=lua" },
             { "FileType", "justfile", "set ft=make" },
             { "FileType", "wgsl", "set ft=wgsl" },
             { "FileType", "plantuml", "set ft=plantuml" },
@@ -160,6 +178,26 @@ function autocmd.load_autocmds()
 end
 
 autocmd.load_autocmds()
+
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    pattern = { "*" },
+    callback = function()
+        local input_status = tonumber(vim.fn.system("fcitx5-remote"))
+        if input_status == 2 then
+            vim.fn.system("fcitx5-remote -c")
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+    pattern = "*",
+    callback = function()
+        if vim.fn.line("'\"") > 0 and vim.fn.line("'\"") <= vim.fn.line("$") then
+            vim.fn.setpos(".", vim.fn.getpos("'\""))
+            vim.cmd("silent! foldopen")
+        end
+    end,
+})
 
 require("notify").setup({
     background_colour = "#000000",

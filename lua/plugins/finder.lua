@@ -103,7 +103,7 @@ return {
         },
         opts = {
             filesystem = {
-                bind_to_cwd = false,
+                bind_to_cwd = true,
             },
         },
     },

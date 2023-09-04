@@ -1,11 +1,10 @@
 " Enable Mouse
 set mouse=a
 
-set guifont=JetBrainsMono\ NF:h14
 " Set Editor Font
 if exists(':GuiFont')
     " set guifont=BlexMono\ NF:h10
-    set guifont=JetBrainsMono\ NF:h14
+    set guifont=JetBrainsMono\ Nerd\ Font:h14
 endif
 
 " Disable GUI Tabline

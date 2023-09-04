@@ -38,5 +38,21 @@
     "prefix": "test",
     "body": ["#[test]", "fn ${1:name}() {", "    ${2:unimplemented!();}", "}"],
     "description": "#[test]"
+  },
+  "sketch": {
+    "prefix": "sketch",
+    "body": [
+      "use nannou::prelude::*;",
+      "fn main() {",
+      "    nannou::sketch(view).run(),",
+      "}",
+      "fn view(app: &App, frame: Frame) {",
+      "    let draw = app.draw();",
+      "    draw.background().color(PLUM);",
+      "    draw.ellipse().color(STEELBLUE);",
+      "    draw.to_frame(app, &frame).unwrap();",
+      "}"
+    ],
+    "description": "sketch"
   }
 }

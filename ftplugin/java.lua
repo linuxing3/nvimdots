@@ -1,5 +1,5 @@
---- @diagnostic disable:unused-local
 --- @diagnostic disable:undefined-global
+--- @diagnostic disable:unused-local
 --- @diagnostic disable:missing-parameter
 --- @diagnostic disable:undefined-field
 
@@ -63,14 +63,14 @@ local function get_bundles()
     local jar_patterns = {
         vim.fn.glob(
             env.HOME -- ~/.vscode/extensions/vscjava.vscode-java-debug-0.52.0/
-                .. "/.vscode/extensions/vscjava.vscode-java-debug-0.52.0/com.microsoft.java.debug.plugin-*.jar"
+                .. "/.vscode/extensions/vscjava.vscode-java-debug-0.53.0/com.microsoft.java.debug.plugin-*.jar"
         ),
     }
     vim.list_extend(
         jar_patterns,
         vim.split(
             -- ~/.vscode/extensions/vscjava.vscode-java-test-0.39.0
-            vim.fn.glob(env.HOME .. "/.vscode/extensions/vscjava.vscode-java-test-0.39/server/*.jar"),
+            vim.fn.glob(env.HOME .. "/.vscode/extensions/vscjava.vscode-java-test-0.39.1/server/*.jar"),
             "\n"
         )
     )
@@ -80,7 +80,7 @@ end
 -- FIXME
 local function get_jar_patterns()
     local jar_patterns = {}
-    local plugin_path = path.join(env.HOME, "/.vscode/extensions/vscjava.vscode-java-test-0.39/server")
+    local plugin_path = path.join(env.HOME, "/.vscode/extensions/vscjava.vscode-java-test-0.39.1/server")
     local bundle_list = vim.tbl_map(function(x)
         return path.join(plugin_path, x)
     end, {
@@ -130,7 +130,6 @@ local function on_attach_extra(client, bufnr)
     jdtls.setup_dap({ hotcodereplace = "auto" })
 
     -- commands and keys
-    jdtls.setup.add_commands()
     local opts = { silent = true, buffer = bufnr }
 
     vim.keymap.set("n", "<leader>df", jdtls.test_class, opts)
@@ -218,19 +217,14 @@ local settings = {
                 template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
             },
         },
-        -- configuration = {
-        --     runtimes = {
-        --         {
-        --             name = "JavaSE-17",
-        --             path = env.HOME ..
-        --             "/.vscode-insiders/extensions/redhat.java-1.18.2023041704-linux-x64/jre/17.0.6-linux-x86_64",
-        --         },
-        --         {
-        --             name = "JavaSE-8",
-        --             path = env.HOME .. "/lib/jdk/8/",
-        --         },
-        --     }
-        -- },
+        configuration = {
+            runtimes = {
+                {
+                    name = "JavaSE-17",
+                    path = "/lib/jvm/java-17-openjdk",
+                },
+            },
+        },
     },
 }
 

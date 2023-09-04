@@ -49,7 +49,7 @@ return {
     {
         "L3MON4D3/LuaSnip",
         setup = function()
-            local snippet_path = os.getenv("HOME") .. "/.config/nvim/my-snippets/"
+            local snippet_path = os.getenv("HOME") .. "/.config/nvim/my-snippets"
             if not vim.tbl_contains(vim.opt.rtp:get(), snippet_path) then
                 vim.opt.rtp:append(snippet_path)
             end
