@@ -22,6 +22,8 @@ end
 map("n", "<leader><leader>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
 
 map({ "n", "v", "i" }, "<f4>", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
+map({ "n", "v", "i" }, "<C-p>", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
+
 -- file explorer
 map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
 map({ "n", "v" }, "<f12>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition" })
@@ -67,23 +69,26 @@ map("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
 if Util.has("bufferline.nvim") then
-    map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-    map("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+    -- map("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+    -- map("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
     map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+    map("n", "<C-tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
     map("n", "<leader>bo", "<cmd>BufferLineCloseOthers<cr>", { desc = "Kill others buffer" })
     map("n", "<leader>bl", "<cmd>BufferLineCloseLeft<cr>", { desc = "Kill left buffer" })
     map("n", "<leader>br", "<cmd>BufferLineCloseRight<cr>", { desc = "Kill right buffer" })
 else
-    map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-    map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+    -- map("n", "<S-tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+    -- map("n", "<tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
     map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+    map("n", "<C-tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
+map({ "n", "i", "v" }, "<C-q>", "<cmd>Bclose!<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
@@ -172,7 +177,6 @@ local lazyterm = function() Util.float_term(nil, { cwd = Util.get_root() }) end
 map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
 map("n", "<leader>fT", function() Util.float_term() end, { desc = "Terminal (cwd)" })
 map("n", "<c-/>", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<c-_>", lazyterm, { desc = "which_key_ignore" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
@@ -187,6 +191,7 @@ map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<C-x>", "<C-W>c", { desc = "Delete window", remap = true })
 
 map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
 map("n", "<leader>wh", "<C-W>s", { desc = "Split window below", remap = true })

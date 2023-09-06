@@ -20,9 +20,9 @@ function autocmd.load_autocmds()
     local definitions = {
         editor = {
             {
-                "FocusLost, InsertLeave,TextChanged",
+                "BufLeave",
                 "*",
-                "silent! wall",
+                "silent! w",
             },
         },
         bufs = {
@@ -37,10 +37,10 @@ function autocmd.load_autocmds()
                 "*.vim",
                 [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
             },
-            {
-                "BufWritePost",
-                "~/workspace/cxx/**/build.justfile ! just -f '%' -d . '%:p:h'",
-            },
+            -- {
+            --     "BufWritePost",
+            --     "~/workspace/cxx/**/build.justfile ! just -f '%' -d . '%:p:h'",
+            -- },
             {
                 "BufWritePost",
                 "xmake.lua ! xmake project -k compile_commands",
@@ -75,7 +75,7 @@ function autocmd.load_autocmds()
             },
             {
                 "BufEnter",
-                "*.wgsl",
+                "*.wgsl|*.wsl|*.gsl",
                 "silent! set ft=wgsl",
             },
             {
@@ -129,11 +129,6 @@ function autocmd.load_autocmds()
         wins = {
             -- Highlight current line only on focused window
             {
-                "WinEnter,BufEnter,InsertLeave",
-                "*",
-                [[if ! &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal cursorline | endif]],
-            },
-            {
                 "WinLeave,BufLeave,InsertEnter",
                 "*",
                 [[if &cursorline && &filetype !~# '^\(dashboard\|clap_\)' && ! &pvw | setlocal nocursorline | endif]],
@@ -153,6 +148,7 @@ function autocmd.load_autocmds()
             { "FileType", "lua", "set ft=lua" },
             { "FileType", "justfile", "set ft=make" },
             { "FileType", "wgsl", "set ft=wgsl" },
+            { "FileType", "wsl", "set ft=wgsl" },
             { "FileType", "plantuml", "set ft=plantuml" },
             { "FileType", "ditaa", "set ft=ditaa" },
             { "FileType", "alpha", "set showtabline=0" },
