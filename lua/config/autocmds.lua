@@ -43,7 +43,8 @@ function autocmd.load_autocmds()
             -- },
             {
                 "BufWritePost",
-                "xmake.lua ! xmake project -k compile_commands",
+                "xmake.lua",
+                "xmake project -k compile_commands",
             },
             {
                 "BufEnter",
