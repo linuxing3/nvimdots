@@ -15,29 +15,7 @@ return {
                 return col ~= 0
                     and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
             end
-            -- local has_words_before = function()
-            --   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
-            --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-            --   return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
-            -- end
             local luasnip = require("luasnip")
-
-            -- opts.sources = vim.tbl_extend("force", opts.sources, {
-            --     -- Copilot Source
-            --     { name = "copilot", group_index = 2 },
-            --     -- Other Sources
-            --     { name = "nvim_lsp", group_index = 2 },
-            --     { name = "path", group_index = 2 },
-            --     { name = "luasnip", group_index = 2 },
-            -- })
-
-            opts.formatting = vim.tbl_extend("force", opts.formatting, {
-                format = require("lspkind").cmp_format({
-                    mode = "symbol",
-                    max_width = 50,
-                    symbol_map = { Copilot = "" },
-                }),
-            })
 
             opts.mapping = vim.tbl_extend("force", opts.mapping, {
                 ["<Tab>"] = cmp.mapping(function(fallback)
@@ -65,8 +43,6 @@ return {
                     end
                 end, { "i", "s" }),
             })
-
-            vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
         end,
     },
     {
@@ -87,21 +63,5 @@ return {
             require("luasnip.loaders.from_snipmate").lazy_load()
         end,
     },
-    { "github/copilot.vim", event = "BufEnter" },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     cmd = "Copilot",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot").setup({})
-    --     end,
-    -- },
-    -- {
-    --     "zbirenbaum/copilot-cmp",
-    --     event = "InsertEnter",
-    --     config = function()
-    --         require("copilot_cmp").setup()
-    --     end,
-    -- },
     -- { "Exafunction/codeium.vim", event = "BufEnter" },
 }

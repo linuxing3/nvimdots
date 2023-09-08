@@ -9,6 +9,8 @@ return {
     { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.dap.nlua" },
     { import = "lazyvim.plugins.extras.test.core" },
+    { import = "lazyvim.plugins.extras.coding.copilot" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
     -- add pyright, clangd, rust_analyzer, jsonls to lspconfig
     {
         "neovim/nvim-lspconfig",
@@ -108,4 +110,6 @@ return {
     { "onsails/lspkind.nvim" },
     { "skywind3000/asynctasks.vim" },
     { "skywind3000/asyncrun.vim" },
+    { "NoahTheDuke/vim-just" },
+    { "IndianBoy42/tree-sitter-just" },
 }

@@ -3,12 +3,6 @@ require("notify").setup({
 })
 
 return {
-    {
-        "NoahTheDuke/vim-just",
-    },
-    {
-        "IndianBoy42/tree-sitter-just",
-    },
     "skyuplam/broot.nvim",
     "rbgrouleff/bclose.vim",
 }
