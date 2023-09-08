@@ -22,14 +22,14 @@ return {
             -- end
             local luasnip = require("luasnip")
 
-            opts.sources = vim.tbl_extend("force", opts.sources, {
-                -- Copilot Source
-                { name = "copilot", group_index = 2 },
-                -- Other Sources
-                { name = "nvim_lsp", group_index = 2 },
-                { name = "path", group_index = 2 },
-                { name = "luasnip", group_index = 2 },
-            })
+            -- opts.sources = vim.tbl_extend("force", opts.sources, {
+            --     -- Copilot Source
+            --     { name = "copilot", group_index = 2 },
+            --     -- Other Sources
+            --     { name = "nvim_lsp", group_index = 2 },
+            --     { name = "path", group_index = 2 },
+            --     { name = "luasnip", group_index = 2 },
+            -- })
 
             opts.formatting = vim.tbl_extend("force", opts.formatting, {
                 format = require("lspkind").cmp_format({
@@ -87,21 +87,21 @@ return {
             require("luasnip.loaders.from_snipmate").lazy_load()
         end,
     },
-    -- { "github/copilot.vim", event = "BufEnter" },
-    {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({})
-        end,
-    },
-    {
-        "zbirenbaum/copilot-cmp",
-        event = "InsertEnter",
-        config = function()
-            require("copilot_cmp").setup()
-        end,
-    },
+    { "github/copilot.vim", event = "BufEnter" },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({})
+    --     end,
+    -- },
+    -- {
+    --     "zbirenbaum/copilot-cmp",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot_cmp").setup()
+    --     end,
+    -- },
     -- { "Exafunction/codeium.vim", event = "BufEnter" },
 }

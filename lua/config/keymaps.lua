@@ -39,8 +39,10 @@ map("n", "<leader>h", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Swit
 map("n", "<leader>cc", "<cmd>call module#cpp#copy_definition()<cr>", { desc = "Copy Definition" })
 map("n", "<leader>ci", "<cmd>call module#cpp#paste_implementation()<cr>", { desc = "Paste Implementation" })
 
+map("n", "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
+map("n", "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
 -- dapui
-map({ "n", "v" }, "<f5>", function()
+map({ "n", "v" }, "<f7>", function()
     require("dapui").eval()
 end, { desc = "Dap UI" })
 

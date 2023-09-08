@@ -19,11 +19,11 @@ end
 function autocmd.load_autocmds()
     local definitions = {
         editor = {
-            {
-                "BufLeave",
-                "*",
-                "silent! w",
-            },
+            -- {
+            --     "BufLeave",
+            --     "*",
+            --     "silent! w",
+            -- },
         },
         bufs = {
             -- Reload vim config automatically
@@ -47,21 +47,6 @@ function autocmd.load_autocmds()
                 "xmake project -k compile_commands",
             },
             {
-                "BufEnter",
-                "*.txt|*.mdx|*.md|*.markdown|*.MD",
-                "silent! set ft=markdown",
-            },
-            {
-                "BufEnter",
-                "*.justfile",
-                "silent! set ft=make",
-            },
-            {
-                "BufEnter",
-                "CMakeLists.txt",
-                "silent! set ft=cmake",
-            },
-            {
                 "BufWritePost",
                 "Cargo.toml !cargo check",
             },
@@ -75,29 +60,8 @@ function autocmd.load_autocmds()
                 "~/.local/share/chezmoi/* ! chezmoi apply --source-path '%'",
             },
             {
-                "BufEnter",
-                "*.wgsl|*.wsl|*.gsl",
-                "silent! set ft=wgsl",
-            },
-            {
-                "BufEnter",
-                "*.wsl",
-                "silent! set ft=wgsl",
-            },
-            {
-                "BufEnter",
-                "*.plantuml",
-                "silent! set ft=plantuml",
-            },
-            {
                 "BufWritePost",
                 "*.plantuml ! java -jar ~/.dotfiles/tools/plantuml.jar '%'",
-            },
-            { "BufNewFile, BufRead", "justfile", "silent! set ft=make" },
-            {
-                "BufEnter",
-                "*.ditaa",
-                "silent! set ft=ditaa",
             },
             {
                 "BufWritePost",
@@ -109,7 +73,7 @@ function autocmd.load_autocmds()
             { "BufWritePre", "*.tmp", "setlocal noundofile" },
             { "BufWritePre", "*.bak", "setlocal noundofile" },
             -- auto change directory
-            { "BufEnter", "*", "silent! lcd %:p:h" },
+            -- { "BufEnter", "*", "silent! lcd %:p:h" },
             -- auto place to last edit
             {
                 "BufReadPost",

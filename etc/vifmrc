@@ -1,1 +1,0 @@
-nnoremap l :if filetype('.') == "dir"|cd %c|else|exe ''|endif<CR>
