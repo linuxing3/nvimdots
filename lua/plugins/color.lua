@@ -15,6 +15,7 @@ return {
     { "ellisonleao/gruvbox.nvim" },
     { "rebelot/kanagawa.nvim" },
     { "jacoborus/tender.vim" },
+    { "projekt0n/github-nvim-theme" },
     -- Configure LazyVim to load gruvbox
     {
         "LazyVim/LazyVim",

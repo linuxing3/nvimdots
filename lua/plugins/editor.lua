@@ -1,5 +1,37 @@
 return {
     {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {
+            plugins = { spelling = true },
+            defaults = {
+                mode = { "n", "v" },
+                ["g"] = { name = "+goto" },
+                ["gz"] = { name = "+surround" },
+                ["]"] = { name = "+next" },
+                ["["] = { name = "+prev" },
+                ["<leader><tab>"] = { name = "+tabs" },
+                ["<leader>b"] = { name = "+buffer" },
+                ["<leader>c"] = { name = "+code" },
+                ["<leader>f"] = { name = "+file/find" },
+                ["<leader>g"] = { name = "+git" },
+                ["<leader>h"] = { name = "+helper" },
+                ["<leader>o"] = { name = "+org" },
+                ["<leader>gh"] = { name = "+hunks" },
+                ["<leader>q"] = { name = "+quit/session" },
+                ["<leader>s"] = { name = "+search" },
+                ["<leader>u"] = { name = "+ui" },
+                ["<leader>w"] = { name = "+windows" },
+                ["<leader>x"] = { name = "+diagnostics/quickfix" },
+            },
+        },
+        config = function(_, opts)
+            local wk = require("which-key")
+            wk.setup(opts)
+            wk.register(opts.defaults)
+        end,
+    },
+    {
         "nvim-neorg/neorg",
         dependencies = {
             "nvim-lua/plenary.nvim",
@@ -10,11 +42,11 @@ return {
         },
         build = ":Neorg sync-parsers",
         keys = {
-            { "<leader>own", "<cmd>Neorg workspace notes<cr>", desc = "Neorg workspace notes" },
-            { "<leader>owh", "<cmd>Neorg workspace home<cr>", desc = "Neorg workspace home" },
-            { "<leader>ojt", "<cmd>Neorg journal today<cr>", desc = "Neorg journey today" },
-            { "<leader>ojy", "<cmd>Neorg journal yesterday<cr>", desc = "Neorg journal yesterday" },
-            { "<leader>ojm", "<cmd>Neorg journal tomorrow<cr>", desc = "Neorg journal tomorrow" },
+            { "<leader>on", "<cmd>Neorg workspace notes<cr>", desc = "Neorg workspace notes" },
+            { "<leader>oh", "<cmd>Neorg workspace home<cr>", desc = "Neorg workspace home" },
+            { "<leader>ot", "<cmd>Neorg journal today<cr>", desc = "Neorg journey today" },
+            { "<leader>oy", "<cmd>Neorg journal yesterday<cr>", desc = "Neorg journal yesterday" },
+            { "<leader>om", "<cmd>Neorg journal tomorrow<cr>", desc = "Neorg journal tomorrow" },
         },
         config = function()
             local neorg_callbacks = require("neorg.core.callbacks")

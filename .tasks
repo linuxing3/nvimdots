@@ -1,0 +1,12 @@
+# vim: set fenc=utf-8 ft=dosini:
+# see: https://github.com/skywind3000/asynctasks.vim/wiki/Task-Config
+
+[project-build]
+command=rg -n --no-heading --color never "$(VIM_CWORD)" "<root>" -tc -tcpp -tpy -tvim -tgo -tasm -tlua -tjs
+cwd=<root>
+errorformat=%f:%l:%m
+
+[project-run]
+command=ranger
+cwd=$(VIM_ROOT)
+output=terminal
