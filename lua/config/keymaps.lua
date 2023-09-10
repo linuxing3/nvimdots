@@ -30,6 +30,8 @@ map({ "n", "v", "i" }, "<f4>", "<cmd>Telescope projects<cr>", { desc = "List Pro
 
 -- file explorer
 map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
+map({ "n", "v" }, "<C-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
+map({ "n", "v" }, "<M-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
 map({ "n", "v" }, "<f12>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition" })
 map({ "n", "v" }, "<S-f12>", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "Goto type definitions" })
 map({ "n", "v" }, "<f11>", "<cmd>Telescope lsp_implementations<cr>", { desc = "Goto Implementation" })
