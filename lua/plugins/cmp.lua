@@ -63,5 +63,4 @@ return {
             require("luasnip.loaders.from_snipmate").lazy_load()
         end,
     },
-    -- { "Exafunction/codeium.vim", event = "BufEnter" },
 }
