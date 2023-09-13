@@ -60,10 +60,22 @@ map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+-- map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+-- map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+-- map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+-- map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-- Move to tmux pane using the <ctrl> hjkl keys
+map({ "n", "i", "v", "t" }, "<C-h>", "<cmd>lua require('tmux').move_left()<cr>", { desc = "Tmux left pane" })
+map({ "n", "i", "v", "t" }, "<C-l>", "<cmd>lua require('tmux').move_right()<cr>", { desc = "Tmux right pane" })
+map({ "n", "i", "v", "t" }, "<C-k>", "<cmd>lua require('tmux').move_top()<cr>", { desc = "Tmux top pane" })
+map({ "n", "i", "v", "t" }, "<C-j>", "<cmd>lua require('tmux').move_bottom()<cr>", { desc = "Tmux bottom pane" })
+
+-- Resize tmux pane using the <alt> hjkl keys
+map({ "n", "i", "v", "t" }, "<A-h>", "<cmd>lua require('tmux').resize_left()<cr>", { desc = "Tmux left pane" })
+map({ "n", "i", "v", "t" }, "<A-l>", "<cmd>lua require('tmux').resize_right()<cr>", { desc = "Tmux right pane" })
+map({ "n", "i", "v", "t" }, "<A-k>", "<cmd>lua require('tmux').resize_top()<cr>", { desc = "Tmux top pane" })
+map({ "n", "i", "v", "t" }, "<A-j>", "<cmd>lua require('tmux').resize_bottom()<cr>", { desc = "Tmux bottom pane" })
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
@@ -109,7 +121,6 @@ end
 map({ "n", "i", "v" }, "<C-q>", "<cmd>Bclose!<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "\\", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -230,7 +241,7 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- copilot settings
 -- AI Assistant
-map({ "n", "v", "i" }, "<C-\\>", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
+-- map({ "n", "v", "i" }, "<C-\\>", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
 
 map({ "n" }, "cc", "<cmd>Copilot panel<cr>", { desc = "Code with copilot" })
 map({ "n" }, "ce", "<cmd>Copilot enable<cr>", { desc = "Enable copilot" })
