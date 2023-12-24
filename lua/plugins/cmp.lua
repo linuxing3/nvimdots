@@ -7,7 +7,8 @@ return {
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
             local cmp = require("cmp")
-            opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
+            opts.sources =
+                cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" }, { name = "orgmode" } }))
 
             local has_words_before = function()
                 unpack = unpack or table.unpack
