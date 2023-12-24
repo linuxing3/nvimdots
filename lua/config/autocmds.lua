@@ -41,11 +41,11 @@ function autocmd.load_autocmds()
             --     "BufWritePost",
             --     "~/workspace/cxx/**/build.justfile ! just -f '%' -d . '%:p:h'",
             -- },
-            {
-                "BufWritePost",
-                "xmake.lua",
-                "xmake project -k compile_commands",
-            },
+            -- {
+            --     "BufWritePost",
+            --     "xmake.lua",
+            --     "xmake project -k compile_commands",
+            -- },
             {
                 "BufWritePost",
                 "Cargo.toml !cargo check",
@@ -85,11 +85,6 @@ function autocmd.load_autocmds()
                 "*",
                 [[if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif]],
             },
-            -- Auto toggle fcitx5
-            -- {"InsertLeave", "* :silent", "!fcitx5-remote -c"},
-            -- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
-            -- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
-            -- {"BufLeave", "*", ":silent !fcitx5-remote -c "}
         },
         wins = {
             -- Highlight current line only on focused window
