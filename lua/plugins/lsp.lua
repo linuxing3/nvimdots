@@ -37,6 +37,7 @@ return {
     { import = "lazyvim.plugins.extras.lang.tex" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.docker" },
+    { import = "lazyvim.plugins.extras.lang.tailwind" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.dap.core" },
@@ -59,12 +60,14 @@ return {
                 gopls = {},
                 pyright = {},
                 astro = {},
+                tailwindcss = {},
+                svelte = {},
                 wgsl_analyzer = {},
                 zls = {},
             },
             setup = {
                 eslint = function()
-                    require("lazyvim.util").on_attach(function(client)
+                    require("lazyvim.util").lsp.on_attach(function(client)
                         if client.name == "eslint" then
                             client.server_capabilities.documentFormattingProvider = true
                         elseif client.name == "tsserver" then

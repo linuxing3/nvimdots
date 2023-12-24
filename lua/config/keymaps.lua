@@ -204,10 +204,11 @@ if vim.fn.has("nvim-0.9.0") == 1 then
   map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
--- floating terminal
+-- terminal
 local lazyterm = function() Util.terminal.open(nil, { cwd = Util.root.get(), float = { border =  "rounded"} }) end
-map("n", "<leader>ft", lazyterm, { desc = "Terminal (root dir)" })
-map("n", "<C-`>", function() Util.terminal.open("zsh", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Zsh (root dir)" })
+map("n", "<C-`>", lazyterm, { desc = "Terminal (root dir)" })
+-- floating terminal
+map("n", "<leader>ft", function() Util.terminal.open("zsh", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Zsh (root dir)" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
