@@ -13,7 +13,7 @@ local clangd_config = {
             "meson.build",
             "meson_options.txt",
             "build.ninja"
-        )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(fname) or require(
+        )(fname) or require("lspconfig.util").root_pattern("compile_flags.txt", "compile_commands.json")(fname) or require(
             "lspconfig.util"
         ).find_git_ancestor(fname)
     end,
@@ -97,6 +97,37 @@ return {
         "Civitasv/cmake-tools.nvim",
         config = function()
             require("cmake-tools").setup({})
+        end,
+    },
+    {
+        "Mythos-404/xmake.nvim",
+        lazy = true,
+        event = "BufReadPost xmake.lua",
+        config = true,
+        opts = {
+            compile_command = { -- compile_command file generation configuration
+                lsp = "clangd", -- generate compile_commands file for which lsp to read
+                dir = ".", -- location of the generated file
+            },
+        },
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    },
+    {
+        "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require("dap")
+            dap.configurations.cpp = {
+                {
+                    name = "Launch file",
+                    type = "codelldb",
+                    request = "launch",
+                    program = function()
+                        return require("xmake.project_config").info.target.exec_path
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
+                },
+            }
         end,
     },
     {

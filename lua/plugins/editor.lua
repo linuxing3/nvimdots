@@ -154,7 +154,7 @@ return {
     {
         "iamcco/markdown-preview.nvim",
         config = function()
-            vim.fn["mkdp#util#install"]()
+            -- vim.fn["mkdp#util#install"]()
         end,
     },
     {
@@ -176,6 +176,7 @@ return {
                 ["<leader>h"] = { name = "+helper" },
                 ["<leader>o"] = { name = "+org" },
                 ["<leader>gh"] = { name = "+hunks" },
+                ["<leader>n"] = { name = "+new" },
                 ["<leader>q"] = { name = "+quit/session" },
                 ["<leader>s"] = { name = "+search" },
                 ["<leader>u"] = { name = "+ui" },

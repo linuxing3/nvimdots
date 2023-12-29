@@ -3,6 +3,33 @@ return {
         "nvim-lualine/lualine.nvim",
         optional = true,
         event = "VeryLazy",
+        config = function()
+            local xmake_component = {
+                function()
+                    local xmake = require("xmake.project_config").info
+                    if xmake.target.tg == "" then
+                        return ""
+                    end
+                    return xmake.target.tg .. "(" .. xmake.mode .. ")"
+                end,
+
+                cond = function()
+                    return vim.o.columns > 100
+                end,
+
+                on_click = function()
+                    require("xmake.project_config._menu").init() -- Add the on-click ui
+                end,
+            }
+
+            require("lualine").setup({
+                sections = {
+                    lualine_y = {
+                        xmake_component,
+                    },
+                },
+            })
+        end,
     },
     { import = "lazyvim.plugins.extras.ui.edgy" },
     {
