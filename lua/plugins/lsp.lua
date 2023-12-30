@@ -1,38 +1,26 @@
+--- @diagnostic disable:undefined-field
+--- @diagnostic disable:missing-fields
+
+---@type lspconfig.options.clangd
 local clangd_config = {
-    root_dir = function(fname)
-        return require("lspconfig.util").root_pattern(
-            "Makefile",
-            "xmake.lua",
-            "premake5.lua",
-            "pixi",
-            "build.justifile",
-            "CMakeLists.txt",
-            "configure.ac",
-            "configure.in",
-            "config.h.in",
-            "meson.build",
-            "meson_options.txt",
-            "build.ninja"
-        )(fname) or require("lspconfig.util").root_pattern("compile_flags.txt", "compile_commands.json")(fname) or require(
-            "lspconfig.util"
-        ).find_git_ancestor(fname)
-    end,
-    capabilities = {
-        offsetEncoding = { "utf-16" },
-    },
-    init_options = {
-        usePlaceholders = true,
-        completeUnimported = true,
-        clangdFileStatus = true,
+    settings = {
+        clangd = {
+            checkUpdates = true,
+            restartAfterCrash = true,
+            onConfigChanged = "restart",
+        },
     },
 }
 
 return {
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
     { import = "lazyvim.plugins.extras.lang.rust" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
+    { import = "lazyvim.plugins.extras.lang.java" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.tex" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
@@ -52,9 +40,38 @@ return {
         "neovim/nvim-lspconfig",
         ---@class PluginLspOpts
         opts = {
+            -- options for vim.diagnostic.config()
+            diagnostics = {
+                underline = true,
+                update_in_insert = false,
+                virtual_text = {
+                    spacing = 4,
+                    source = "if_many",
+                    prefix = "●",
+                    -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+                    -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+                    -- prefix = "icons",
+                },
+                severity_sort = true,
+            },
+            -- Enable this to enable the builtin LSP inlay hints on Neovim >= 0.10.0
+            -- Be aware that you also will need to properly configure your LSP server to
+            -- provide the inlay hints.
+            inlay_hints = {
+                enabled = false,
+            },
+            -- add any global capabilities here
+            capabilities = {},
+            -- options for vim.lsp.buf.format
+            -- `bufnr` and `filter` is handled by the LazyVim formatter,
+            -- but can be also overridden when specified
+            format = {
+                formatting_options = nil,
+                timeout_ms = nil,
+            },
             ---@type lspconfig.options
             servers = {
-                clangd = clangd_config,
+                clangd = {},
                 rust_analyzer = {},
                 bashls = {},
                 gopls = {},
