@@ -1,3 +1,13 @@
+local auto_switch_colorscheme = function()
+    local hour = tonumber(os.date("%H"))
+    if hour > 6 and hour < 18 then
+        return "github_light"
+    end
+    return "tokyonight"
+end
+
+local colorscheme = auto_switch_colorscheme()
+
 return {
     {
         "folke/tokyonight.nvim",
@@ -20,7 +30,7 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "tokyonight",
+            colorscheme = colorscheme,
         },
     },
 }
