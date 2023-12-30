@@ -177,6 +177,7 @@ return {
                 ["<leader>o"] = { name = "+org" },
                 ["<leader>gh"] = { name = "+hunks" },
                 ["<leader>n"] = { name = "+new" },
+                ["<leader>p"] = { name = "+project" },
                 ["<leader>q"] = { name = "+quit/session" },
                 ["<leader>s"] = { name = "+search" },
                 ["<leader>u"] = { name = "+ui" },

@@ -30,7 +30,11 @@ map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Change ColorS
 
 -- find projects
 map({ "n", "v", "i" }, "<f4>", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
-map({ "n", "v" }, "<space>np", "<cmd>AddProject<cr>", { desc = "Add Projects" })
+map({ "n", "v" }, "<space>pp", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
+map({ "n", "v" }, "<space>pa", "<cmd>AddProject<cr>", { desc = "Add Projects" })
+
+-- yank history
+map({ "n", "v" }, "<space>sy", "<cmd>Telescope yarn_history<cr>", { desc = "Yank history" })
 
 -- file explorer
 map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
@@ -212,7 +216,7 @@ end
 local lazyterm = function() Util.terminal.open(nil, { cwd = Util.root.get(), float = { border =  "rounded"} }) end
 map("n", "<C-`>", lazyterm, { desc = "Terminal (root dir)" })
 -- floating terminal
-map("n", "<leader>ft", function() Util.terminal.open("zsh", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Zsh (root dir)" })
+map("n", "<leader>ft", function() Util.terminal.open("fish", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Fish (root dir)" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
