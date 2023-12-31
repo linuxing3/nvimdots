@@ -35,26 +35,32 @@ map({ "n", "v" }, "<C-p>", "<cmd>Telescope projects<cr>", { desc = "Telescope pr
 map({ "n", "v" }, "<space>pa", "<cmd>AddProject<cr>", { desc = "Add Projects" })
 
 -- yank history
-map({ "n", "v" }, "<space>sy", "<cmd>Telescope yarn_history<cr>", { desc = "Yank history" })
+map({ "n", "v" }, "<space>sy", "<cmd>YarnRingHistory<cr>", { desc = "Yank history" })
 
 -- cheat sheat
 map({ "n", "v" }, "<space>se", "<cmd>Telescope cheat fd<cr>", { desc = "Find cheatsheat" })
 
 -- file explorer
+-- new file
+map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
+-- find file
+map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+-- explorer
 map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
 map({ "n", "v" }, "<C-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
 map({ "n", "v" }, "<M-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
+
+-- lsp
 map({ "n", "v" }, "<f12>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition" })
 map({ "n", "v" }, "<S-f12>", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "Goto type definitions" })
 map({ "n", "v" }, "<f11>", "<cmd>Telescope lsp_implementations<cr>", { desc = "Goto Implementation" })
 map({ "n", "v" }, "<S-f11>", "<cmd>Telescope lsp_references<cr>", { desc = "Goto Reference" })
 
--- lsp
 map({ "n", "v" }, "<f2>", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "cr", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
-map("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
-map("n", "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
+map({ "n", "v" }, "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
+map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
 
 -- Task runner
 map("n", "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
@@ -130,9 +136,30 @@ else
     map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
     map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 end
-map({ "n", "i", "v" }, "<C-q>", "<cmd>Bclose!<cr>", { desc = "Next buffer" })
+map({ "n", "i", "v" }, "<C-q>", "<cmd>Bclose!<cr>", { desc = "Close buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+-- windows
+map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
+
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<C-x>", "<C-W>c", { desc = "Delete window", remap = true })
+
+map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>wh", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
+map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
+
+map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
+
+-- tabs
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -171,12 +198,6 @@ map("v", ">", ">gv")
 
 -- lazy
 map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
--- new file
-map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
-
--- find file
-map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 
 -- list
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
@@ -230,28 +251,6 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
-
--- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-map("n", "<C-x>", "<C-W>c", { desc = "Delete window", remap = true })
-
-map("n", "<leader>w-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>wh", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>w|", "<C-W>v", { desc = "Split window right", remap = true })
-map("n", "<leader>wv", "<C-W>v", { desc = "Split window right", remap = true })
-
-map("n", "<leader>-", "<C-W>s", { desc = "Split window below", remap = true })
-map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
-
--- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- copilot settings
 -- AI Assistant
