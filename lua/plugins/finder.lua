@@ -85,6 +85,16 @@ return {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         config = function()
+            require("telescope").setup({
+                extensions = {
+                    fzf = {
+                        fuzzy = true, -- false will only do exact matching
+                        override_generic_sorter = true, -- override the generic sorter
+                        override_file_sorter = true, -- override the file sorter
+                        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                    },
+                },
+            })
             require("telescope").load_extension("fzf")
         end,
     },
@@ -92,6 +102,16 @@ return {
         "nvim-telescope/telescope-arecibo.nvim",
         rocks = { "openssl", "lua-http-parser" },
         config = function()
+            require("telescope").setup({
+                extensions = {
+                    arecibo = {
+                        ["selected_engine"] = "bing",
+                        ["url_open_command"] = "xdg-open",
+                        ["show_http_headers"] = false,
+                        ["show_domain_icons"] = false,
+                    },
+                },
+            })
             require("telescope").load_extension("arecibo")
         end,
     },
@@ -111,6 +131,14 @@ return {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
         config = function()
+            require("telescope").setup({
+                extensions = {
+                    file_browser = {
+                        -- use the "ivy" theme if you want
+                        theme = "ivy",
+                    },
+                },
+            })
             require("telescope").load_extension("file_browser")
         end,
     },
@@ -128,8 +156,8 @@ return {
                         workspaces = {
                             ["conf"] = "/home/vagrant/.config",
                             ["data"] = "/home/vagrant/.local/share",
-                            ["project"] = "/home/vagrant/projects",
-                            ["wiki"] = "/home/vagrant/org",
+                            ["workspace"] = "/home/vagrant/workspace",
+                            ["wiki"] = "/home/vagrant/OneDrive/org",
                         },
                     },
                 },

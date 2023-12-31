@@ -31,10 +31,14 @@ map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Change ColorS
 -- find projects
 map({ "n", "v", "i" }, "<f4>", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
 map({ "n", "v" }, "<space>pp", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
+map({ "n", "v" }, "<C-p>", "<cmd>Telescope projects<cr>", { desc = "Telescope project" })
 map({ "n", "v" }, "<space>pa", "<cmd>AddProject<cr>", { desc = "Add Projects" })
 
 -- yank history
 map({ "n", "v" }, "<space>sy", "<cmd>Telescope yarn_history<cr>", { desc = "Yank history" })
+
+-- cheat sheat
+map({ "n", "v" }, "<space>se", "<cmd>Telescope cheat fd<cr>", { desc = "Find cheatsheat" })
 
 -- file explorer
 map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })

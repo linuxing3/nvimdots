@@ -37,24 +37,6 @@ function autocmd.load_autocmds()
                 "*.vim",
                 [[nested if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
             },
-            -- {
-            --     "BufWritePost",
-            --     "~/workspace/cxx/**/build.justfile ! just -f '%' -d . '%:p:h'",
-            -- },
-            -- {
-            --     "BufWritePost",
-            --     "xmake.lua",
-            --     "xmake project -k compile_commands",
-            -- },
-            {
-                "BufWritePost",
-                "Cargo.toml !cargo check",
-            },
-            {
-                "BufEnter",
-                "~/.local/share/chezmoi/*",
-                "silent! set ft=bash",
-            },
             {
                 "BufWritePost",
                 "~/.local/share/chezmoi/* ! chezmoi apply --source-path '%'",
@@ -105,6 +87,7 @@ function autocmd.load_autocmds()
             { "VimResized", "*", [[tabdo wincmd =]] },
         },
         ft = {
+            { "FileType", "css", "set ft=css" },
             { "FileType", "lua", "set ft=lua" },
             { "FileType", "justfile", "set ft=make" },
             { "FileType", "wgsl", "set ft=wgsl" },

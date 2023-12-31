@@ -78,6 +78,7 @@ return {
                 pyright = {},
                 astro = {},
                 tailwindcss = {},
+                cssls = {},
                 svelte = {},
                 wgsl_analyzer = {},
                 zls = {},
