@@ -63,13 +63,29 @@ map({ "n", "v" }, "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "C
 map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
 
 -- Task runner
-map("n", "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
-map("n", "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
+map({ "n", "v", "i" }, "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
+map({ "n", "v", "i" }, "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
 
 -- Debug
-map({ "n", "v" }, "<f7>", function()
-    require("dapui").eval()
+map({ "n", "v", "i" }, "<f7>", function()
+    require("dap").toggle_breakpoint()
+end, { desc = "Dap break" })
+
+map({ "n", "v", "i" }, "<f8>", function()
+    require("dap").continue()
+end, { desc = "Dap continue" })
+
+map({ "n", "v", "i" }, "<f9>", function()
+    require("dapui").toggle()
 end, { desc = "Dap UI" })
+
+map({ "n", "v", "i" }, "<f10>", function()
+    require("dap").step_into()
+end, { desc = "Dap step into" })
+
+map({ "n", "v", "i" }, "<f11>", function()
+    require("dap").step_over()
+end, { desc = "Dap step over" })
 
 -- quick tools
 
