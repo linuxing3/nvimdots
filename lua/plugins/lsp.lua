@@ -78,10 +78,35 @@ return {
                 pyright = {},
                 astro = {},
                 tailwindcss = {},
-                cssls = {},
+                cssls = {
+                    settings = {
+                        setup = function()
+                            require("lspconfig").cssls.setup({})
+                        end,
+                    },
+                },
                 svelte = {},
-                wgsl_analyzer = {},
-                zls = {},
+                wgsl_analyzer = {
+                    settings = {
+                        wgsl_analyzer = {
+                            setup = function()
+                                require("lspconfig").wgsl_analyzer.setup({})
+                            end,
+                        },
+                    },
+                },
+                zls = {
+                    settings = {
+                        zls = {
+                            enable_autofix = true,
+                            enable_ast_check_diagnostics = true,
+                            enable_snippets = true,
+                            enable_inlay_hints = true,
+                            enable_semantic_tokens = true,
+                            enable_import_embedfile_argument_completions = true,
+                        },
+                    },
+                },
             },
             setup = {
                 eslint = function()
@@ -132,6 +157,7 @@ return {
     },
     {
         "mfussenegger/nvim-dap",
+        keys = {},
         config = function()
             local dap = require("dap")
             dap.configurations.cpp = {
