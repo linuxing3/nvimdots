@@ -1,5 +1,5 @@
 local my_org_capture_templates = {
-    r = {
+    l = {
         description = "links",
         template = "* [[%x][%(return string.match('%x', '([^/]+)$'))]]%?",
         target = "~/OneDrive/org/links.org",
@@ -9,12 +9,12 @@ local my_org_capture_templates = {
         template = "* TODO %?\n %u",
         target = "~/OneDrive/org/inbox.agenda.org",
     },
-    j = {
-        description = "Journal",
+    a = {
+        description = "Agenda",
         template = "\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?",
         target = "~/OneDrive/org/note.agenda.org",
     },
-    J = {
+    j = {
         description = "Journal",
         template = "\n*** %<%Y-%m-%d> %<%A>\n**** %U\n\n%?",
         target = "~/OneDrive/org/journal/%<%Y-%m>.org",
@@ -36,11 +36,11 @@ local my_org_capture_templates = {
             },
         },
     },
-    S = {
-        description = "Journal",
+    d = {
+        description = "Dairy",
         template = '* %(return vim.fn.getreg "w")',
         -- get the content of register "w"
-        target = "~/OneDrive/org/journal.org",
+        target = "~/OneDrive/org/dairy.org",
     },
 }
 
