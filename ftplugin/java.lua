@@ -62,15 +62,16 @@ end
 local function get_bundles()
     local jar_patterns = {
         vim.fn.glob(
-            env.HOME -- ~/.vscode/extensions/vscjava.vscode-java-debug-0.52.0/
-                .. "/.vscode/extensions/vscjava.vscode-java-debug-0.53.0/com.microsoft.java.debug.plugin-*.jar"
+            env.HOME
+                .. "/.vscode/extensions/vscjava.vscode-java-debug-0.5*.0/server/com.microsoft.java.debug.plugin-0.5*.*.jar"
         ),
     }
     vim.list_extend(
         jar_patterns,
         vim.split(
             -- ~/.vscode/extensions/vscjava.vscode-java-test-0.39.0
-            vim.fn.glob(env.HOME .. "/.vscode/extensions/vscjava.vscode-java-test-0.39.1/server/*.jar"),
+            vim.fn.glob(env.HOME .. "/.vscode/extensions/vscjava.vscode-java-test-0.4*.1/server/*.jar"),
+            -- "~/.vscode/extensions/vscjava.vscode-java-test-0.40.1/server/com.microsoft.java.test.plugin-0.40.1.jar"
             "\n"
         )
     )
@@ -80,7 +81,7 @@ end
 -- FIXME
 local function get_jar_patterns()
     local jar_patterns = {}
-    local plugin_path = path.join(env.HOME, "/.vscode/extensions/vscjava.vscode-java-test-0.39.1/server")
+    local plugin_path = path.join(env.HOME, "/.vscode/extensions/vscjava.vscode-java-test-0.40.1/server")
     local bundle_list = vim.tbl_map(function(x)
         return path.join(plugin_path, x)
     end, {

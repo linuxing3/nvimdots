@@ -244,6 +244,10 @@ end
 map("n", "<leader>gg", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>G", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 
+-- filer
+map("n", "<leader>br", function() Util.terminal.open("broot", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "broot (current dir)" })
+map("n", "<leader>bf", "vs term://br", { desc = "broot (current dir)" })
+
 -- quit
 map("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit all" })
 map("n", "<leader>ss", "<cmd>sa!<cr>", { desc = "Save all" })
@@ -256,6 +260,7 @@ end
 -- terminal
 local lazyterm = function() Util.terminal.open(nil, { cwd = Util.root.get(), float = { border =  "rounded"} }) end
 map("n", "<C-`>", lazyterm, { desc = "Terminal (root dir)" })
+
 -- floating terminal
 map("n", "<leader>ft", function() Util.terminal.open("fish", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Fish (root dir)" })
 
