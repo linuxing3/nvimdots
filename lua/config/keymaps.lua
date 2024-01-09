@@ -244,18 +244,16 @@ end
 map("n", "<leader>gg", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>G", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 
--- filer
+-- filer broot
 map("n", "<leader>br", function() Util.terminal.open("broot", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "broot (current dir)" })
-map("n", "<leader>bf", "vs term://br", { desc = "broot (current dir)" })
+map("n", "<leader>wb", "<cmd>vs term://br<cr>", { desc = "broot (current dir)" })
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit all" })
 map("n", "<leader>ss", "<cmd>sa!<cr>", { desc = "Save all" })
 
 -- highlights under cursor
-if vim.fn.has("nvim-0.9.0") == 1 then
-  map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-end
+map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- terminal
 local lazyterm = function() Util.terminal.open(nil, { cwd = Util.root.get(), float = { border =  "rounded"} }) end
