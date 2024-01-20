@@ -1,6 +1,10 @@
 # vim: set fenc=utf-8 ft=dosini:
 # see: https://github.com/skywind3000/asynctasks.vim/wiki/Task-Config
 
+[puml-build]
+command=plantuml "$(VIM_FILEPATH)" && imv "$(VIM_FILEDIR)/$(VIM_FILENOEXT).png"
+cwd=<root>
+
 [project-build]
 command=rg -n --no-heading --color never "$(VIM_CWORD)" "<root>" -tc -tcpp -tpy -tvim -tgo -tasm -tlua -tjs
 cwd=<root>

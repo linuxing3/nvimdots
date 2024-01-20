@@ -41,14 +41,28 @@ map({ "n", "v" }, "<space>sy", "<cmd>YarnRingHistory<cr>", { desc = "Yank histor
 map({ "n", "v" }, "<space>se", "<cmd>Telescope cheat fd<cr>", { desc = "Find cheatsheat" })
 
 -- file explorer
+map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
+-- filer broot
+map("n", "<leader>br", function()
+    Util.terminal.open(
+        "broot",
+        { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded" } }
+    )
+end, { desc = "broot (current dir)" })
+map("n", "<M-e>", function()
+    Util.terminal.open(
+        "broot",
+        { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded" } }
+    )
+end, { desc = "broot (current dir)" })
+map("n", "<leader>wb", "<cmd>vs term://br<cr>", { desc = "broot (current dir)" })
+
+-- filer telescope
+map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+map({ "n", "v" }, "<C-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
+
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
--- find file
-map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
--- explorer
-map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
-map({ "n", "v" }, "<C-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
-map({ "n", "v" }, "<M-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
 
 -- lsp
 map({ "n", "v" }, "<f12>", "<cmd>Telescope lsp_definitions<cr>", { desc = "Goto Definition" })
@@ -244,10 +258,6 @@ end
 map("n", "<leader>gg", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>G", function() Util.terminal.open("lazygit", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "Lazygit (root dir)" })
 
--- filer broot
-map("n", "<leader>br", function() Util.terminal.open("broot", { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded"}}) end, { desc = "broot (current dir)" })
-map("n", "<leader>wb", "<cmd>vs term://br<cr>", { desc = "broot (current dir)" })
-
 -- quit
 map("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit all" })
 map("n", "<leader>ss", "<cmd>sa!<cr>", { desc = "Save all" })
@@ -268,8 +278,8 @@ map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide Terminal" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+map("t", "<A-e>", "<cmd>close<cr>", { desc = "Hide Broot" })
 
 -- copilot settings
 -- AI Assistant

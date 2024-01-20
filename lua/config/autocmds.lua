@@ -41,13 +41,14 @@ function autocmd.load_autocmds()
                 "BufWritePost",
                 "~/.local/share/chezmoi/* ! chezmoi apply --source-path '%'",
             },
+            -- {
+            -- "BufWritePost",
+            -- "*.puml ! plantuml '%'",
+            -- "*.puml ! plantuml '%' && pcmanfm '%:p:r'.png",
+            -- },
             {
                 "BufWritePost",
-                "*.plantuml ! java -jar ~/.dotfiles/tools/plantuml.jar '%'",
-            },
-            {
-                "BufWritePost",
-                "*.ditaa ! java -jar ~/.dotfiles/tools/ditaa.jar '%' '%'.png",
+                "*.ditaa ! ditaa '%' '%'.png && pcmanfm '%:p:r'.png",
             },
             { "BufWritePre", "/tmp/*", "setlocal noundofile" },
             { "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },

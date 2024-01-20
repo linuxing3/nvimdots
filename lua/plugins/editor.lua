@@ -1,3 +1,6 @@
+local plantuml = require("ftp.plantuml")
+plantuml.setup({ renderer = "imv" })
+
 local my_org_capture_templates = {
     l = {
         description = "links",

@@ -1,0 +1,7 @@
+@startuml
+
+database bd
+
+actor xing
+
+@enduml
