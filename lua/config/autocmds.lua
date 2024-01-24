@@ -4,6 +4,17 @@
 local vim = vim
 local autocmd = {}
 
+vim.filetype.add({
+    extension = {
+        justfile = "justfile",
+        just = "justfile",
+        ditaa = "ditaa",
+        plantuml = "plantuml",
+        puml = "plantuml",
+        chezmoi = "chezmoi",
+    },
+})
+
 function autocmd.nvim_create_augroups(definitions)
     for group_name, definition in pairs(definitions) do
         vim.api.nvim_command("augroup " .. group_name)
@@ -90,7 +101,8 @@ function autocmd.load_autocmds()
         ft = {
             { "FileType", "css", "set ft=css" },
             { "FileType", "lua", "set ft=lua" },
-            { "FileType", "justfile", "set ft=make" },
+            { "FileType", "chezmoi", "set ft=sh" },
+            { "FileType", "justfile", "set ft=sh" },
             { "FileType", "wgsl", "set ft=wgsl" },
             { "FileType", "wsl", "set ft=wgsl" },
             { "FileType", "plantuml", "set ft=plantuml" },

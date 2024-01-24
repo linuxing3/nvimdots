@@ -1,7 +1,28 @@
-@startuml
+@startmindmap
+caption figure 1
+header EFWMC Academy
+title Nvim Ultimate Editor
 
-database bd
++ <&flag>Nvim
 
-actor xing
+** Lsp
+*** Clang
+*** lua
+*** rust
+*** java
+*** nodejs
 
-@enduml
+left side
+
+** Tips
+***:Create plantuml automatically brutly
+<code>
+plantuml file.puml > file.png
+</code>
+;
+*** Using org-mode
+*** Using telescope
+*** Using lazygit
+*** Using terminal
+
+@endmindmap
