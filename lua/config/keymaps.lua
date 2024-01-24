@@ -77,27 +77,27 @@ map({ "n", "v" }, "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "C
 map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
 
 -- Task runner
-map({ "n", "v", "i" }, "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
-map({ "n", "v", "i" }, "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
+map({ "n", "i" }, "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
+map({ "n", "i" }, "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
 
 -- Debug
-map({ "n", "v", "i" }, "<f7>", function()
+map({ "n", "i" }, "<f7>", function()
     require("dap").toggle_breakpoint()
 end, { desc = "Dap break" })
 
-map({ "n", "v", "i" }, "<f8>", function()
+map({ "n", "i" }, "<f8>", function()
     require("dap").continue()
 end, { desc = "Dap continue" })
 
-map({ "n", "v", "i" }, "<f9>", function()
+map({ "n", "i" }, "<f9>", function()
     require("dapui").toggle()
 end, { desc = "Dap UI" })
 
-map({ "n", "v", "i" }, "<f10>", function()
+map({ "n", "i" }, "<f10>", function()
     require("dap").step_into()
 end, { desc = "Dap step into" })
 
-map({ "n", "v", "i" }, "<f11>", function()
+map({ "n", "i" }, "<f11>", function()
     require("dap").step_over()
 end, { desc = "Dap step over" })
 
@@ -280,6 +280,11 @@ map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 map("t", "<A-e>", "<cmd>close<cr>", { desc = "Hide Broot" })
+
+-- Sniprun settings
+map("v", "f", "<cmd>SnipRun<cr>", { desc = "SnipRun"})
+map("v", "<f5>", "<cmd>SnipRun<cr>", { desc = "SnipRun"})
+map("n", "<leader>rr", "<cmd>SnipRun<cr>", { desc = "SnipRun"})
 
 -- copilot settings
 -- AI Assistant

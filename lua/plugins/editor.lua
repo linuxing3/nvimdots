@@ -210,6 +210,7 @@ return {
                 ["<leader>n"] = { name = "+new" },
                 ["<leader>p"] = { name = "+project" },
                 ["<leader>q"] = { name = "+quit/session" },
+                ["<leader>r"] = { name = "+task" },
                 ["<leader>s"] = { name = "+search" },
                 ["<leader>u"] = { name = "+ui" },
                 ["<leader>w"] = { name = "+windows" },

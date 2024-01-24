@@ -292,4 +292,12 @@ return {
     { "skywind3000/asyncrun.vim" },
     { "NoahTheDuke/vim-just" },
     { "IndianBoy42/tree-sitter-just" },
+    {
+        "michaelb/sniprun",
+        branch = "master",
+        build = "sh install.sh",
+        config = function()
+            require("sniprun").setup({})
+        end,
+    },
 }
