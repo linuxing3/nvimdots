@@ -23,7 +23,7 @@ end
 
 -- commands panel
 map("n", "<leader><leader>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
-map({ "n", "v", "i" }, "<C-S-p>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
+map({ "n", "v", "i" }, "<C-S-P>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
 
 -- colorscheme list
 map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Change ColorScheme" })
@@ -41,25 +41,20 @@ map({ "n", "v" }, "<space>sy", "<cmd>YarnRingHistory<cr>", { desc = "Yank histor
 map({ "n", "v" }, "<space>se", "<cmd>Telescope cheat fd<cr>", { desc = "Find cheatsheat" })
 
 -- file explorer
-map({ "n", "v" }, "<f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
+map({ "n", "v" }, "<C-f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })
+
 -- filer broot
-map("n", "<leader>br", function()
+map("n", "<leader>fa", "<cmd>vs term://br<cr>", { desc = "broot (current dir)" })
+map("n", "<leader>fg", function()
     Util.terminal.open(
         "broot",
         { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded" } }
     )
 end, { desc = "broot (current dir)" })
-map("n", "<M-e>", function()
-    Util.terminal.open(
-        "broot",
-        { cwd = Util.root.get(), esc_esc = false, ctrl_hjkl = false, float = { border = "rounded" } }
-    )
-end, { desc = "broot (current dir)" })
-map("n", "<leader>wb", "<cmd>vs term://br<cr>", { desc = "broot (current dir)" })
 
 -- filer telescope
 map("n", "<leader>.", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
-map({ "n", "v" }, "<C-e>", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
+map({ "n", "v" }, "<leader>fd", "<cmd>Telescope file_browser file_browser<cr>", { desc = "Toggle file_browser" })
 
 -- new file
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
@@ -73,8 +68,7 @@ map({ "n", "v" }, "<S-f11>", "<cmd>Telescope lsp_references<cr>", { desc = "Goto
 map({ "n", "v" }, "<f2>", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "cr", vim.lsp.buf.rename, { desc = "Rename variable" })
 map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
-map({ "n", "v" }, "<leader>ch", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
-map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch S/H" })
+map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch" })
 
 -- Task runner
 map({ "n", "i" }, "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
@@ -220,14 +214,15 @@ map("i", ";", ";<c-g>u")
 map("i", "jj", "<esc><esc>")
 
 -- save file
-map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map("n", "<leader>ss", "<cmd>wa!<cr>", { desc = "Save all" })
+map({ "i", "v", "n" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- lazy
-map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- list
 map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
@@ -260,7 +255,6 @@ map("n", "<leader>G", function() Util.terminal.open("lazygit", { cwd = Util.root
 
 -- quit
 map("n", "<leader>qq", "<cmd>qa!<cr>", { desc = "Quit all" })
-map("n", "<leader>ss", "<cmd>sa!<cr>", { desc = "Save all" })
 
 -- highlights under cursor
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
