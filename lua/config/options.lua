@@ -63,4 +63,12 @@ end
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 -- Fix async open output open
+
+-- async task and run
 vim.g.asyncrun_open = 6
+vim.g.asynctasks_term_pos = "tab"
+vim.g.asynctasks_rtp_config = "tasks.ini"
+vim.g.asynctasks_extra_config = {
+    "~/.config/tasks/global_tasks.ini",
+    "~/.config/tasks/extra_tasks.ini",
+}

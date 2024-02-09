@@ -18,7 +18,7 @@ return {
     { import = "lazyvim.plugins.extras.dap.nlua" },
     { import = "lazyvim.plugins.extras.test.core" },
     -- Ai assistant
-    -- { import = "lazyvim.plugins.extras.coding.copilot" },
+    { import = "lazyvim.plugins.extras.coding.copilot" },
     -- { "Exafunction/codeium.vim", event = "BufEnter" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
     {
@@ -189,21 +189,21 @@ return {
             require("cmake-tools").setup({})
         end,
     },
-    -- {
-    --     "Mythos-404/xmake.nvim",
-    --     disable = true,
-    --     lazy = true,
-    --     event = "BufReadPost xmake.lua",
-    --     config = true,
-    --     opts = {
-    --         compile_command = { -- compile_command file generation configuration
-    --             lsp = "clangd", -- generate compile_commands file for which lsp to read
-    --             dir = "build", -- location of the generated file
-    --         },
-    --         work_dir = require("lspconfig.util").root_pattern("xmake.lua") or vim.fn.getcwd(),
-    --     },
-    --     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    -- },
+    {
+        "Mythos-404/xmake.nvim",
+        disable = true,
+        lazy = true,
+        event = "BufReadPost xmake.lua",
+        config = true,
+        opts = {
+            compile_command = { -- compile_command file generation configuration
+                lsp = "clangd", -- generate compile_commands file for which lsp to read
+                dir = "build", -- location of the generated file
+            },
+            work_dir = require("lspconfig.util").root_pattern("xmake.lua") or vim.fn.getcwd(),
+        },
+        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    },
     {
         "mfussenegger/nvim-dap",
         keys = {},

@@ -1,5 +1,5 @@
-local plantuml = require("ftp.plantuml")
-plantuml.setup({ renderer = "imv" })
+-- local plantuml = require("ftp.plantuml")
+-- plantuml.setup({ renderer = "text" })
 
 local my_org_capture_templates = {
     l = {
@@ -162,6 +162,7 @@ return {
     },
     -- {
     --     "3rd/image.nvim",
+    --     disabled = true,
     --     event = "VeryLazy",
     --     opts = {
     --         backend = "kitty",
@@ -186,6 +187,7 @@ return {
     --         max_width_window_percentage = nil,
     --         max_height_window_percentage = 50,
     --         kitty_method = "normal",
+    --         hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
     --     },
     -- },
     {
@@ -200,8 +202,11 @@ return {
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
                 ["<leader><tab>"] = { name = "+tabs" },
+                ["<leader>a"] = { name = "+action" },
                 ["<leader>b"] = { name = "+buffer" },
                 ["<leader>c"] = { name = "+code" },
+                ["<leader>d"] = { name = "+document" },
+                ["<leader>e"] = { name = "+extensions" },
                 ["<leader>f"] = { name = "+file/find" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>h"] = { name = "+helper" },

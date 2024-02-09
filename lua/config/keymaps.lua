@@ -1,6 +1,3 @@
---- @diagnostic disable:undefined-global
---- @diagnostic disable:undefined-field
-
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -29,9 +26,7 @@ map({ "n", "v", "i" }, "<C-S-P>", "<cmd>Telescope commands<cr>", { desc = "Comma
 map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Change ColorScheme" })
 
 -- find projects
-map({ "n", "v", "i" }, "<f4>", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
 map({ "n", "v" }, "<space>pp", "<cmd>Telescope projects<cr>", { desc = "List Projects" })
-map({ "n", "v" }, "<C-p>", "<cmd>Telescope projects<cr>", { desc = "Telescope project" })
 map({ "n", "v" }, "<space>pa", "<cmd>AddProject<cr>", { desc = "Add Projects" })
 
 -- yank history
@@ -71,7 +66,7 @@ map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
 map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch" })
 
 -- Task runner
-map({ "n", "i" }, "<f5>", "<cmd>AsyncTask project-build<cr>", { desc = "Project build" })
+map({ "n", "i" }, "<f5>", "<cmd>AsyncTask file-buildrun<cr>", { desc = "Project build" })
 map({ "n", "i" }, "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
 
 -- Debug
@@ -282,13 +277,13 @@ map("n", "<leader>rr", "<cmd>SnipRun<cr>", { desc = "SnipRun"})
 
 -- copilot settings
 -- AI Assistant
--- map({ "n", "v", "i" }, "<C-\\>", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
+map({ "n", "v", "i" }, "<C-\\>", "<cmd>Copilot panel<cr>", { desc = "Copilot Panel" })
 
 map({ "n" }, "cc", "<cmd>Copilot panel<cr>", { desc = "Code with copilot" })
 map({ "n" }, "ce", "<cmd>Copilot enable<cr>", { desc = "Enable copilot" })
 map({ "n" }, "cq", "<cmd>Copilot disable<cr>", { desc = "Disable copilot" })
 vim.cmd[[
-    let g:copilot_proxy = 'http://localhost:10809'
+    " let g:copilot_proxy = 'http://localhost:10809'
     " imap <silent><script><expr> <tab> copilot#Accept("\<CR>")
     " let g:copilot_no_tab_map = v:false
 ]]

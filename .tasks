@@ -4,13 +4,18 @@
 [puml-build]
 command=plantuml "$(VIM_FILEPATH)" && imv "$(VIM_FILEDIR)/$(VIM_FILENOEXT).png"
 cwd=<root>
+output=terminal
+pos=tab
 
 [project-build]
 command=rg -n --no-heading --color never "$(VIM_CWORD)" "<root>" -tc -tcpp -tpy -tvim -tgo -tasm -tlua -tjs
 cwd=<root>
 errorformat=%f:%l:%m
+output=terminal
+pos=tab
 
 [project-run]
 command=ranger
 cwd=$(VIM_ROOT)
 output=terminal
+pos=tab
