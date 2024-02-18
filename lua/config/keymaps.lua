@@ -66,8 +66,8 @@ map({ "n", "v" }, "ca", vim.lsp.buf.code_action, { desc = "Code action" })
 map({ "n", "v" }, "gh", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Clangd Switch" })
 
 -- Task runner
-map({ "n", "i" }, "<f5>", "<cmd>AsyncTask file-buildrun<cr>", { desc = "Project build" })
-map({ "n", "i" }, "<f6>", "<cmd>AsyncTask project-run<cr>", { desc = "Project run" })
+map({ "n", "i" }, "<f5>", "<cmd>AsyncTask file-buildrun<cr>", { desc = "File build run" })
+map({ "n", "i" }, "<f6>", "<cmd>AsyncTask project-buildrun<cr>", { desc = "Project build run" })
 
 -- Debug
 map({ "n", "i" }, "<f7>", function()

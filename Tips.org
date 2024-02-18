@@ -1,5 +1,0 @@
-#+title: Org Mode in Neovim
-#+author: xing wenju
-
-
-* TODO task descriptionAgenda

@@ -200,7 +200,6 @@ return {
                 lsp = "clangd", -- generate compile_commands file for which lsp to read
                 dir = "build", -- location of the generated file
             },
-            work_dir = require("lspconfig.util").root_pattern("xmake.lua") or vim.fn.getcwd(),
         },
         dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     },
