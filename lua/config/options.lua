@@ -11,6 +11,7 @@ if os.getenv("theme") == "light" then
     opt.background = "light"
 end
 
+opt.autochdir = true -- Auto change dir
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"

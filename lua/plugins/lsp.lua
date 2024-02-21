@@ -191,7 +191,6 @@ return {
     },
     {
         "Mythos-404/xmake.nvim",
-        disable = true,
         lazy = true,
         event = "BufReadPost xmake.lua",
         config = true,

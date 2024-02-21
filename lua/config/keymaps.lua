@@ -20,7 +20,6 @@ end
 
 -- commands panel
 map("n", "<leader><leader>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
-map({ "n", "v", "i" }, "<C-S-P>", "<cmd>Telescope commands<cr>", { desc = "Commands Panel" })
 
 -- colorscheme list
 map("n", "<leader>tc", "<cmd>Telescope colorscheme<cr>", { desc = "Change ColorScheme" })
@@ -34,6 +33,9 @@ map({ "n", "v" }, "<space>sy", "<cmd>YarnRingHistory<cr>", { desc = "Yank histor
 
 -- cheat sheat
 map({ "n", "v" }, "<space>se", "<cmd>Telescope cheat fd<cr>", { desc = "Find cheatsheat" })
+
+-- browser_bookmarks
+map({ "n", "v" }, "<space>sf", "<cmd>require('browser_bookmarks').select<cr>", { desc = "Browser Bookmarks" })
 
 -- file explorer
 map({ "n", "v" }, "<C-f3>", "<cmd>Neotree toggle<cr>", { desc = "Toggle neotree" })

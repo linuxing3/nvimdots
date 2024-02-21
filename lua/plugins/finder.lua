@@ -39,12 +39,12 @@ return {
             { "<leader>sw", Util.telescope("grep_string"), mode = "v", desc = "Selection (root dir)" },
             { "<leader>sW", Util.telescope("grep_string", { cwd = false }), mode = "v", desc = "Selection (cwd)" },
             {
-                "<leader>uC",
+                "<leader>fi",
                 Util.telescope("colorscheme", { enable_preview = true }),
                 desc = "Colorscheme with preview",
             },
             {
-                "<leader>ss",
+                "<leader>fs",
                 Util.telescope("lsp_document_symbols", {
                     symbols = {
                         "Class",
@@ -62,7 +62,7 @@ return {
                 desc = "Goto Symbol",
             },
             {
-                "<leader>sS",
+                "<leader>fS",
                 Util.telescope("lsp_dynamic_workspace_symbols", {
                     symbols = {
                         "Class",
@@ -119,6 +119,20 @@ return {
         "yorik1984/telescope-cheat.nvim",
         config = function()
             require("telescope").load_extension("cheat")
+        end,
+    },
+    {
+        "dhruvmanila/browser-bookmarks.nvim",
+        version = "*",
+        opts = {
+            selected_browser = "msedge",
+        },
+        dependencies = {
+            "kkharji/sqlite.lua",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function()
+            require("telescope").load_extension("bookmarks")
         end,
     },
     {
